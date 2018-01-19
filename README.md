@@ -1,10 +1,10 @@
-# extendedrecycleradapter
+# ExtendedRecyclerAdapter
 
 Simple adapter written in `kotlin`. You may use it to display data with RecyclerView.
 Making easy to create a list with header and/or footer.
 You can extend this adapter to add some sticky headers or something.
 
-## Installation
+## Installation (to be published tomorrow, 20.01.2018)
 ```
     compile "com.github.keeperus:extendedrecyclerview:1.0"
 ```
