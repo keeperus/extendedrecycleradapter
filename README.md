@@ -7,9 +7,22 @@ Built on generics it allows you to create your app prototypes(or even release ve
 quickly, without writing a ton of code.
 
 ## Installation
+
+### Gradle
 ```
     compile "com.github.keeperus:extendedrecyclerview:1.0"
 ```
+
+### Maven
+```
+<dependency>
+    <groupId>com.github.keeperus</groupId>
+    <artifactId>extendedrecycleradapter</artifactId>
+    <version>1.0.0</version>
+    <type>pom</type>
+</dependency>
+```
+
 ## Usage
 
 Create adapter and display your data in just two lines:
