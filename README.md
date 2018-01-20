@@ -58,7 +58,7 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
                         extra: Any?) {
     }
 
-    override fun onRecycle() { }
+    override fun onRecycle() { } // you should clean up your view in here
 
     override var innerClickListener: View.OnClickListener? = null
     override var onListItemSelectedListener: OnListItemSelectedListener<SomeData>? = null
@@ -98,13 +98,27 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
     adapter.setHighlight(query)
 ```
 
+### Passing some extra value to the view from outside of adapter
+
+    You can pass any object like a bundle, interface or something to your view.
+
+```
+    val bundle = Bundle
+    adapter.extra = bundle
+```
+or
+```
+    adapter.extra = View.OnClickListener {/**some code*/}
+```
+
+
 ### Handling view clicks
 
 ```
    adapter.onClickListener = View.OnClickListener { /**do something*/}
 ```
 
-### Handling clicks and stated on the SomeDataView side
+### Handling clicks and selected state on the SomeDataView side
 
 ```
     override fun setItem(item: SomeData,
