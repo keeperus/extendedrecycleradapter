@@ -4,7 +4,7 @@ Simple adapter written in `kotlin`. You may use it to display data with Recycler
 Making easy to create a list with header and/or footer.
 You can extend this adapter to add some sticky headers or something.
 
-## Installation (to be published tomorrow, 20.01.2018)
+## Installation (to be published next few days, 20-21.01.2018)
 ```
     compile "com.github.keeperus:extendedrecyclerview:1.0"
 ```
@@ -31,6 +31,7 @@ This function is setting adapter to RecyclerView and setting a LinearLayoutManag
 a StaggeredGridLayoutManager if startFromBot = true.
 
 ## SomeDataView example
+
 ```
 class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
 
@@ -59,6 +60,7 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
 
 }
 ```
+
 ## R.layout.list_some_data_view example
 
 ```
