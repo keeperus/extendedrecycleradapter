@@ -1,4 +1,4 @@
-# ExtendedRecyclerAdapter [ ![Download](https://api.bintray.com/packages/keeperus/maven/com.github.keeperus:extendedrecycleradapter/images/download.svg) ](https://bintray.com/keeperus/maven/com.github.keeperus:extendedrecycleradapter/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0
+# ExtendedRecyclerAdapter [ ![Download](https://api.bintray.com/packages/keeperus/maven/com.github.keeperus:extendedrecycleradapter/images/download.svg) ](https://bintray.com/keeperus/maven/com.github.keeperus:extendedrecycleradapter/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Simple adapter written in `kotlin`. You may use it to display data with RecyclerView.
 Making easy to create a list with header and/or footer.
