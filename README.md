@@ -10,7 +10,7 @@ quickly, without writing a ton of code.
 
 ### Gradle
 ```
-    compile "com.github.keeperus:extendedrecyclerview:1.0"
+    compile "com.github.keeperus:extendedrecycleradapter:1.0"
 ```
 
 ### Maven
