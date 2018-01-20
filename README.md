@@ -3,6 +3,8 @@
 Simple adapter written in `kotlin`. You may use it to display data with RecyclerView.
 Making easy to create a list with header and/or footer.
 You can extend this adapter to add some sticky headers or something.
+Built on generics it allows you to create your app prototypes(or even release versions)
+quickly, without writing a ton of code.
 
 ## Installation (to be published next few days, 20-21.01.2018)
 ```
@@ -31,6 +33,9 @@ This function is setting adapter to RecyclerView and setting a LinearLayoutManag
 a StaggeredGridLayoutManager if startFromBot = true.
 
 ## SomeDataView example
+
+Class SomeDataView must extend a ViewGroup and implement ExtendedRecyclerItemInterface to be used by ExtendedRecyclerAdapter.
+Interface ExtendedRecyclerItemInterface has SomeData as a generic parameter.
 
 ```
 class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
