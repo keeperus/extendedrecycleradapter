@@ -36,13 +36,20 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) :
+                    super(context, attrs, defStyleAttr) {
         view = LayoutInflater.from(context).inflate(R.layout.view_chat_dialog, this, true) as View
     }
 
     var view: View? = null
 
-    override fun setItem(item: SomeData, isSelected: Boolean, position: Int, list: ArrayList<SomeData>, hasHeader: Boolean, highlight: String?, extra: Any?) {
+    override fun setItem(item: SomeData,
+                        isSelected: Boolean,
+                        position: Int,
+                        list: ArrayList<SomeData>,
+                        hasHeader: Boolean,
+                        highlight: String?,
+                        extra: Any?) {
     }
 
     override fun onRecycle() { }
@@ -53,6 +60,7 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
 }
 ```
 ## R.layout.list_some_data_view example
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <com.bitbucket.keeperus.extendedrecycleradapter.ui.views.SomeDataView
@@ -61,7 +69,9 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
 ```
+
 ## Adapter functions
+
 ### Header and footer
 
     You can set a header view or/and a footer view to your adapter
@@ -71,26 +81,46 @@ class SomeDataView : LinearLayout, ExtendedRecyclerItemInterface<SomeData> {
     adapter.setHeader(headerView) // set a header. adapter.notifyDataSetChanged is called automatically
     adapter.setHeader(null) remove a header. adapter.notifyDataSetChanged is called automatically
 ```
+
 ### Highlight
     You can add some highlights for you TextViews with Spannables.
     Can be useful for filtering your data by some text value.
+
 ```
     val query: String?
     adapter.setHighlight(query)
 ```
+
 ### Handling view clicks
+
 ```
    adapter.onClickListener = View.OnClickListener { /**do something*/}
 ```
+
 ### Handling clicks and stated on the SomeDataView side
+
 ```
-    override fun setItem(item: SomeData, isSelected: Boolean, position: Int, list: ArrayList<SomeData>, hasHeader: Boolean, highlight: String?, extra: Any?) {
+    override fun setItem(item: SomeData,
+                        isSelected: Boolean,
+                        position: Int, list:
+                        ArrayList<SomeData>,
+                        hasHeader: Boolean,
+                        highlight: String?,
+                        extra: Any?) {
         setOnClickListener(innerClickListener)
     }
 ```
+
 or
+
 ```
-    override fun setItem(item: SomeData, isSelected: Boolean, position: Int, list: ArrayList<SomeData>, hasHeader: Boolean, highlight: String?, extra: Any?) {
+    override fun setItem(item: SomeData,
+                        isSelected: Boolean,
+                        position: Int,
+                        list: ArrayList<SomeData>,
+                        hasHeader: Boolean,
+                        highlight: String?,
+                        extra: Any?) {
         someButton.setTag(R.id.data_extra, item)
         someButton.setOnClickListener {
             innerClickListener?.onClick(it)
@@ -98,7 +128,9 @@ or
         }
     }
 ```
+
 and later you can use it:
+
 ```
    adapter.onClickListener = View.OnClickListener {
         val item = it.getTag(R.id.data_extra) as SomeData
