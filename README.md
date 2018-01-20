@@ -1,4 +1,4 @@
-# ExtendedRecyclerAdapter
+# ExtendedRecyclerAdapter [ ![Download](https://api.bintray.com/packages/keeperus/maven/com.github.keeperus:extendedrecycleradapter/images/download.svg) ](https://bintray.com/keeperus/maven/com.github.keeperus:extendedrecycleradapter/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0
 
 Simple adapter written in `kotlin`. You may use it to display data with RecyclerView.
 Making easy to create a list with header and/or footer.
@@ -6,7 +6,7 @@ You can extend this adapter to add some sticky headers or something.
 Built on generics it allows you to create your app prototypes(or even release versions)
 quickly, without writing a ton of code.
 
-## Installation (to be published next few days, 20-21.01.2018)
+## Installation
 ```
     compile "com.github.keeperus:extendedrecyclerview:1.0"
 ```
