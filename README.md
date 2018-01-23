@@ -18,7 +18,7 @@ quickly, without writing a ton of code.
 <dependency>
     <groupId>com.github.keeperus</groupId>
     <artifactId>extendedrecycleradapter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <type>pom</type>
 </dependency>
 ```
