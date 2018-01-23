@@ -175,3 +175,20 @@ and later you can use it:
         }
    }
 ```
+
+## Extending
+
+    You can extend this adapter to implement some additional interfaces or to add some extra features you need.
+    Please, don't forget that if there is a header, than position is increased by 1, so you need to check hasHeader() function.
+    If you override function setItemView, call the super to save the functionality.
+
+```
+    class SomeDataAdapter(data: ArrayList<SomeData>) :
+            ExtendedRecyclerAdapter<SomeData, SomeDataView>(layoutId = R.layout.list_some_data_view, data = data){
+        override fun setItemView(itemView: SomeDataView, item: SomeData, position: Int) {
+            super.setItemView(itemView, item, position)
+            //Your code
+        }
+    }
+
+```

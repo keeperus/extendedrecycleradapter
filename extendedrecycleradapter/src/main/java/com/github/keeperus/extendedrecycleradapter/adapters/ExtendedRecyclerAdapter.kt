@@ -41,8 +41,8 @@ import java.util.ArrayList
  * @param [layoutId] layout resource Id that contains a [V] view.
  * @param [viewId] resource Id of a view, default value is [R.id.list_item].
  */
-open class ExtendedRecyclerAdapter<T : Any, V>(//
-        val data: ArrayList<T>,
+open class ExtendedRecyclerAdapter<T : Any, V>(
+        protected val data: ArrayList<T>,
         private val layoutId: Int,
         private val viewId: Int = R.id.list_item) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>()
@@ -58,8 +58,14 @@ open class ExtendedRecyclerAdapter<T : Any, V>(//
 
     private var header: View? = null
     private var footer: View? = null
-    private var highlight: String? = null
-    var extra: Any? = null
+    /**
+    * highlighting the text in the view while filtering data by text.
+    */
+    open var highlight: String? = null
+    /**
+     * pass any object like a bundle, interface or something to your view.
+     */
+    open var extra: Any? = null
 
     /**
      * Attaches adapter to the [RecyclerView] and sets a [LinearLayoutManager] if [startFromBot] = true or a [StaggeredGridLayoutManager] if [startFromBot] = false
@@ -107,15 +113,27 @@ open class ExtendedRecyclerAdapter<T : Any, V>(//
             val viewHolder = holder as ItemViewHolder<*>
             val itemView = viewHolder.view as V
             val item = getItem(position - if (header == null) 0 else 1)
-            itemView.innerClickListener = onClickListener
-            itemView.onListItemSelectedListener = onListItemSelectedListener
-            itemView.setItem(item, selected.contains(item), position, data,header != null, highlight, extra)
+            setItemView(itemView, item, position)
         } else {
             val viewHolder = holder as ExtendedRecyclerAdapter.CustomViewHolder
             val view = viewHolder.itemView
             val params = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
             view.layoutParams = params
         }
+    }
+
+    /**
+     * Setting the OnClickListener, OnListItemSelectedListener and an item to its view. Don't forget to call
+     * super.setItemView(itemView, item, position) while overriding.
+     *
+     * @param [itemView] the item view ([V]) in the list.
+     * @param [item] data item ([T]) corresponding to the position.
+     * @param [position] position of item in list. Increased by 1 if there is a header, so please check hasHeader() function while overriding.
+     */
+    protected open fun setItemView(itemView: V, item: T, position: Int) {
+        itemView.innerClickListener = onClickListener
+        itemView.onListItemSelectedListener = onListItemSelectedListener
+        itemView.setItem(item, selected.contains(item), position, data,header != null, highlight, extra)
     }
 
     private fun getItem(position: Int): T {
@@ -159,7 +177,7 @@ open class ExtendedRecyclerAdapter<T : Any, V>(//
      */
     var onClickListener: OnClickListener? = null
 
-    private val onListItemSelectedListener = object : OnListItemSelectedListener<T> {
+    protected val onListItemSelectedListener = object : OnListItemSelectedListener<T> {
         override fun onSelected(item: T, isSelected: Boolean) {
             if (isSelected) {
                 selected.add(item)
@@ -171,13 +189,6 @@ open class ExtendedRecyclerAdapter<T : Any, V>(//
     }
 
     /**
-     * @param [highlight] highlighting the text in the view while filtering data by text.
-     */
-    fun setHighlight(highlight: String) {
-        this.highlight = highlight
-    }
-
-    /**
      * @param [view] add or remove(assign null) header to the [RecyclerView].
      */
     fun setHeaderView(view: View?) {
@@ -186,11 +197,25 @@ open class ExtendedRecyclerAdapter<T : Any, V>(//
     }
 
     /**
+     * @return is there a header view attached to adapter.
+     */
+    fun hasHeader(): Boolean {
+        return header != null
+    }
+
+    /**
      * @param [view] add or remove(assign null) footer to the [RecyclerView].
      */
     fun setFooterView(view: View?) {
         footer = view
         notifyDataSetChanged()
+    }
+
+    /**
+     * @return is there a footer view attached to adapter.
+     */
+    fun hasFooter(): Boolean {
+        return footer != null
     }
 
 }
